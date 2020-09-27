@@ -22,6 +22,7 @@ def find_corners(img):
     img_dup1 = cp.copy(img)
 
     harris = harris_corners(img)
+    print(harris)
     shitomasi,silhouette = shi_tomasi(img_dup)
     
     #Display different corner detection methods side by side
@@ -30,10 +31,10 @@ def find_corners(img):
     out2 = np.concatenate((img_dup1,silhouette),axis=1)
 
     out3 = np.concatenate((out1,out2),axis=0)    
-    #cv2.imshow('Left: Harris, Right: Shi-Tomasi',out1)
-    #cv2.imshow('Important points',out2)
+    cv2.imshow('Left: Harris, Right: Shi-Tomasi',out1)
+    cv2.imshow('Important points',out2)
     cv2.imshow('Corners',out3)
-    return harris,shitomasi,silhouette,out3
+    return harris,shitomasi,silhouette,out2
 
 def main():
 
